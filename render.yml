@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: bench-match-webapp
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase: { name: bench-match-db, property: connectionString }
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase: { name: bench-match-db, property: user }
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase: { name: bench-match-db, property: password }
+
+databases:
+  - name: bench-match-db
+    plan: free
