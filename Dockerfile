@@ -34,7 +34,7 @@ COPY . $HOME
 #   $ docker build --secret id=offlineKey,src=$HOME/.vaadin/offlineKey .
 
 RUN --mount=type=cache,target=/root/.m2 \
-    mvn clean package -DskipTests
+    ./mvnw clean package -DskipTests
 #RUN mvn -B clean package -Pproduction -DskipTests
 
 FROM eclipse-temurin:21-jre-jammy
