@@ -14,8 +14,8 @@
 
 FROM ghcr.io/jqlang/jq:latest AS jq-stage
 
-FROM eclipse-temurin:21-jre-jammy AS build
-#FROM eclipse-temurin:25-jdk AS build
+#FROM eclipse-temurin:21-jre-jammy AS build
+FROM eclipse-temurin:21-jdk AS build
 COPY --from=jq-stage /jq /usr/bin/jq
 # Test that jq works after copying
 RUN jq --version
